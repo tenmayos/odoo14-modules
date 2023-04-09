@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- AFTER sale_order_template_id -->
+    <!-- must have inherit_id field
+    WITH a ref="view's ID im inheriting into" -->
+    <record id="sale_desc_inherit" model="ir.ui.view">
+        <field name="name">sales.inherit</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id"  ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']"
+                   position="after">
+                <field name="sale_desc" required="True"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
