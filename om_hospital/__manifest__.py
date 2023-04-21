@@ -10,7 +10,8 @@
     'website': 'https://www.yankydanky.com',
     'depends': [
         'mail',
-        'sale'
+        'sale',
+        'report_xlsx'
     ],
     'data': [
         'security/ir.model.access.csv',

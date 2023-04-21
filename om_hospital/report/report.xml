@@ -20,4 +20,16 @@
         <field name="binding_model_id" ref="model_sale_order"/>
         <field name="binding_type">report</field>
     </record>
+
+    <!-- This is an XLSX report -->
+    <!-- Depends on the XLSX module -->
+    <record id="report_id_patient_card_xlsx" model="ir.actions.report">
+        <field name="name">Patient Card Sheet</field>
+        <field name="model">hospital.patient</field>
+        <field name="report_name">om_hospital.report_id_patient_card_xlsx</field>
+        <field name="report_file">om_hospital.report_id_patient_card_xlsx</field>
+        <field name="report_type">xlsx</field>
+        <field name="binding_model_id" ref="model_hospital_patient"/>
+        <field name="binding_type">report</field>
+    </record>
 </odoo>
