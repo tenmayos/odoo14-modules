@@ -16,7 +16,12 @@
         'security/ir.model.access.csv',
         'data/data.xml',
         'views/patient.xml',
-        'views/sale_inherit.xml'
+        'views/kids_view.xml',
+        'views/sale_inherit.xml',
+        'report/patient_card.xml',
+        'report/sale_card.xml',
+        'report/report.xml',
+
     ],
     'demo': [],
     'qweb': [],
