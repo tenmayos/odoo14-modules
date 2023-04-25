@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
 <odoo>
-    <template id="report_patient_id_card">
+    <template id="report_patient_card">
         <t t-call="web.basic_layout">
-            <div class="page">
-            </div>
+            <t t-foreach="docs" t-as="o">
+                <div class="page">
+                    <h1>hello</h1>
+                </div>
+            </t>
         </t>
     </template>
-
-
 </odoo>
