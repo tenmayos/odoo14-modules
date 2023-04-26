@@ -16,7 +16,6 @@
     'data': [
         'security/ir.model.access.csv',
         'data/data.xml',
-        'wizard/create_appointment_view.xml',
         'views/patient.xml',
         'views/kids_view.xml',
         'views/sale_inherit.xml',
