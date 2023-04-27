@@ -182,4 +182,12 @@
               parent="hospital_patient_root"
               action="patient_action"
               sequence="10"/>
+
+    <!-- Transient model menu -->
+    <menuitem id="menu_create_appointment"
+              name="Create Appointment"
+              parent="hospital_patient_root"
+              sequence="30"
+              action="action_create_appointment"
+    />
 </odoo>
