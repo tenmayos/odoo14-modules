@@ -23,7 +23,6 @@
         'report/patient_card.xml',
         'report/sale_card.xml',
         'report/report.xml',
-
     ],
     'demo': [],
     'qweb': [],
