@@ -5,13 +5,13 @@ from werkzeug import Response
 
 
 class HospitalController(http.Controller):
-    @http.route('/hello', auth='public')
-    def Hello(self, name):
+    @http.route('/download/patients_age_text', auth='public')
+    def PatientAgesText(self, name):
         patients = request.env['hospital.patient'].search([])
-        for obj in patients:
-            print(obj.age)
 
         with StringIO() as textBuffer:
+            textBuffer.write('Patient Ages:\n')
+
             for obj in patients:
                 textBuffer.write(str(obj.age) + '\n')
 
@@ -21,8 +21,8 @@ class HospitalController(http.Controller):
                 textBuffer.getvalue(),
                 headers={
                     'Content-Type': 'application/octet-stream',
-                    'Content-Disposition': 'attachment; filename=%s' % name + '.txt',
-                },
+                    'Content-Disposition': 'attachment; filename=%s' % name + '.txt'
+                }
             )
             return response
 
