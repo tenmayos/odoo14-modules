@@ -14,6 +14,7 @@
         'report_xlsx'
     ],
     'data': [
+        'security/hospital_security.xml',
         'security/ir.model.access.csv',
         'data/data.xml',
         'wizard/create_appointment_view.xml',
