@@ -3,37 +3,70 @@
 <odoo>
     <data noupdate="0">
         <!-- Setting Categories -->
+        <record model="ir.module.category" id="module_category_employees">
+            <field name="name">Employees</field>
+            <field name="sequence">69</field>
+        </record>
 
+        <record model="ir.module.category" id="module_category_admin">
+            <field name="name">Admins</field>
+            <field name="sequence">69</field>
+        </record>
+
+        <record model="ir.module.category" id="module_category_doctor">
+            <field name="name">Doctor</field>
+            <field name="sequence">69</field>
+        </record>
+
+        <record model="ir.module.category" id="module_category_customer">
+            <field name="name">Customer</field>
+            <field name="sequence">69</field>
+        </record>
         <!-- Hierarchical Definition -->
         <record id="group_hospital" model="res.groups">
             <field name="name">Hospital Employees</field>
-            <field name="category_id" ref="base.module_category_hospital"/>
+            <field name="category_id" ref="module_category_employees"/>
         </record>
 
         <record id="group_hospital_administration" model="res.groups">
             <field name="name">Hospital Administration</field>
-            <field name="category_id" ref="base.module_category_hidden"/>
-            <field name="parent_id" ref="group_hospital"/>
+            <field name="category_id" ref="module_category_admin"/>
+            <field name="implied_ids" eval="[(4, ref('group_hospital'))]"/>
+        </record>
+
+        <record id="group_hospital_skin_department" model="res.groups">
+            <field name="name">Skin Department</field>
+            <field name="category_id" ref="module_category_admin"/>
+            <field name="implied_ids" eval="[(4, ref('group_hospital_administration'))]"/>
+        </record>
+
+        <record id="group_hospital_brain_department" model="res.groups">
+            <field name="name">Brain Department</field>
+            <field name="category_id" ref="module_category_admin"/>
+            <field name="implied_ids" eval="[(4, ref('group_hospital_administration'))]"/>
         </record>
 
         <record id="group_hospital_skin_doctors" model="res.groups">
             <field name="name">Skin Doctors</field>
-            <field name="category_id" ref="base.module_category_hidden"/>
+            <field name="category_id" ref="module_category_doctor"/>
+            <field name="implied_ids" eval="[(4, ref('group_hospital_skin_department'))]"/>
         </record>
 
         <record id="group_hospital_brain_doctors" model="res.groups">
             <field name="name">Brain Doctors</field>
-            <field name="category_id" ref="base.module_category_hidden"/>
+            <field name="category_id" ref="module_category_doctor"/>
+            <field name="implied_ids" eval="[(4, ref('group_hospital_brain_department'))]"/>
         </record>
 
         <record id="group_hospital_receptionist" model="res.groups">
             <field name="name">Receptionist</field>
-            <field name="category_id" ref="base.module_category_hidden"/>
+            <field name="category_id" ref="module_category_employees"/>
+            <field name="implied_ids" eval="[(4, ref('group_hospital'))]"/>
         </record>
 
         <record id="group_hospital_patient" model="res.groups">
             <field name="name">Patient</field>
-            <field name="category_id" ref="base.module_category_hidden"/>
+            <field name="category_id" ref="module_category_customer"/>
         </record>
     </data>
 </odoo>
