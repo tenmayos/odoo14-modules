@@ -1,3 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_hospital_patient,access.hospital.patient,model_hospital_patient,,1,1,1,1
-access_create_appointment_wizard,access.create.appointment.wizard,model_create_appointment_wizard,,1,1,1,1
+access_hospital_patient,access.hospital.patient,model_hospital_patient,group_hospital_skin_doctors,1,1,1,1
+access_hospital_patient,access.hospital.patient,model_hospital_patient,group_hospital_brain_doctors,1,1,1,1
+access_hospital_patient,access.hospital.patient,model_hospital_patient,group_hospital_receptionist,1,1,0,0
+access_create_appointment_wizard,access.create.appointment.wizard,model_create_appointment_wizard,base.group_user,1,1,1,1
