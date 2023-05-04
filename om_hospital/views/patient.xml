@@ -126,6 +126,7 @@
                         <group>
                             <field name="name" string="Patient Name"/>
                             <field name="age" string="Patient Age"/>
+                            <field name="email" string="Patient's Email" required="True"/>
                             <field name="responsible_id" string="Responsible"/>
                         </group>
                         <group>
