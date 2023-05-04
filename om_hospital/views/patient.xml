@@ -88,37 +88,31 @@
 
                     <!-- "states" field specifies when the btn
                     should be visible -->
-                    <button name="ConfirmButton"
-                            id="action_confirm"
-                            string="Confirm"
+                    <button name="TreatingButton"
+                            id="action_done"
+                            string="Begin Treatment"
                             class="btn-primary"
                             type="object"
-                            confirm="Are you sure you want to proceed with this shit?"
+                            states="sick,cancel"
                             />
                     <button name="DoneButton"
                             id="action_done"
-                            string="Mark as Done"
-                            class="btn-primary"
-                            type="object"
-                            states="draft,confirm,cancel"
-                            />
-                    <button name="DraftButton"
-                            id="action_done"
-                            string="Set to Draft"
+                            string="Complete Treatment"
                             class="btn-secondary"
                             type="object"
-                            states="confirm,done,cancel"
+                            states="treating"
+                            confirm="Are you sure?"
                             />
                     <button name="CancelButton"
                             id="action_cancel"
                             string="Cancel"
                             class="btn-danger"
                             type="object"
-                            states="draft,confirm,done"
+                            states="sick,treating"
                             />
                     <field name="state"
                            widget="statusbar"
-                           statusbar_visible="draft,confirm,done"
+                           statusbar_visible="sick,treating,done"
                     />
                     <!-- cancelled state will not be visible -->
                 </header>
