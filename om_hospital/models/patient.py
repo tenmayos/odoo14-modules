@@ -3,7 +3,6 @@ from odoo.exceptions import ValidationError
 
 
 class HospitalPatient(models.Model):
-
     # Based on the _name the table will get created inside Postgress
     # It will be hospital_patient instead of the ' . '
     _name = "hospital.patient"
@@ -55,6 +54,7 @@ class HospitalPatient(models.Model):
         readonly=True,
         default=lambda self: 'New'
     )
+
     # This function fires at the button press from the view.
     def TreatingButton(self):
         self.state = 'treating'
@@ -69,9 +69,12 @@ class HospitalPatient(models.Model):
     @api.model
     def create(self, vals):
         vals['state'] = 'sick'
+        #if '@' not in vals['email']:
+            #raise ValidationError('The Email Address is Incorrect')
 
-        if '@' not in vals['email']:
-            raise ValidationError('The Email Address is Incorrect')
+        if not self.ValidateEmail(vals['email']):
+            raise ValidationError('The Email Address Does not match any users')
+
         # create(vals) is for the chatter log message.
         # Setting note (description) field to new patient if its empty.
         if not vals.get('note'):
@@ -83,3 +86,10 @@ class HospitalPatient(models.Model):
         # vals will be the results entered during record creation.
         # super(ClassStructure, ActualClassWithData)
         return super(HospitalPatient, self).create(vals)
+    def ValidateEmail(self, emailString):
+        usersList = self.env['res.users'].search([])
+        for user in usersList:
+            print(user.login)
+            if user.login == emailString:
+                return True
+        return False
