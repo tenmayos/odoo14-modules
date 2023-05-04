@@ -23,8 +23,8 @@ class HospitalPatient(models.Model):
     ]
 
     possibleStates = [
-        ('draft', 'Draft'),
-        ('confirm', 'Confirmed'),
+        ('sick', 'Sick'),
+        ('treating', 'Treating'),
         ('done', 'Done'),
         ('cancel', 'Cancelled')
     ]
@@ -54,14 +54,11 @@ class HospitalPatient(models.Model):
         default=lambda self: 'New'
     )
     # This function fires at the button press from the view.
-    def ConfirmButton(self):
-        self.state = 'confirm'
+    def TreatingButton(self):
+        self.state = 'treating'
 
     def DoneButton(self):
         self.state = 'done'
-
-    def DraftButton(self):
-        self.state='draft'
 
     def CancelButton(self):
         self.state = 'cancel'
@@ -69,6 +66,7 @@ class HospitalPatient(models.Model):
     # Overriding db record create method.
     @api.model
     def create(self, vals):
+        vals['state'] = 'sick'
         # create(vals) is for the chatter log message.
         # Setting note (description) field to new patient if its empty.
         if not vals.get('note'):
