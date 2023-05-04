@@ -1,4 +1,5 @@
 from odoo import fields, api, models
+from odoo.exceptions import ValidationError
 
 
 class HospitalPatient(models.Model):
@@ -14,6 +15,7 @@ class HospitalPatient(models.Model):
 
     name = fields.Char(string='Name', required=True)
     age = fields.Integer(string='Age', tracking=True)
+    email = fields.Char(string='Email')
 
     # Array of Tuples.
     availableGenders = [
@@ -67,6 +69,9 @@ class HospitalPatient(models.Model):
     @api.model
     def create(self, vals):
         vals['state'] = 'sick'
+
+        if '@' not in vals['email']:
+            raise ValidationError('The Email Address is Incorrect')
         # create(vals) is for the chatter log message.
         # Setting note (description) field to new patient if its empty.
         if not vals.get('note'):
