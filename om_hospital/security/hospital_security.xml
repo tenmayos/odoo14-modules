@@ -54,5 +54,15 @@
             <field name="name">Patient</field>
             <field name="category_id" ref="module_category_customer"/>
         </record>
+
+        <!-- Group record rules -->
+
+        <record id="patient_rule_id" model="ir.rule">
+            <field name="name">Patient Record Rule</field>
+            <field name="model_id" ref="model_hospital_patient"/>
+            <field name="domain_force">[('email', '=', user.login)]</field>
+            <field name="groups" eval="[(4, ref('group_hospital_patient'))]"/>
+        </record>
+
     </data>
 </odoo>
