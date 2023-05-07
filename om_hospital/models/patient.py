@@ -30,6 +30,11 @@ class HospitalPatient(models.Model):
         ('cancel', 'Cancelled')
     ]
 
+    availableDepartments = [
+        ('brain', 'Brain'),
+        ('heart', 'Heart')
+    ]
+
     gender = fields.Selection(availableGenders, default='male')
     note = fields.Text(string='Description')
 
@@ -40,6 +45,8 @@ class HospitalPatient(models.Model):
         string="Status",
         tracking=True
     )
+
+    department = fields.Selection(availableDepartments, string='Department')
 
     # Many2one Field is basically obtained from another place.
     # Many2one Fields r named (name)_id due to convention.
