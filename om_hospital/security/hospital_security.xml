@@ -40,8 +40,12 @@
             <field name="category_id" ref="module_category_admin"/>
         </record>
 
-        <record id="group_hospital_doctor" model="res.groups">
-            <field name="name">Doctors</field>
+        <record id="group_hospital_heart_doctor" model="res.groups">
+            <field name="name">Heart Doctors</field>
+            <field name="category_id" ref="module_category_doctor"/>
+        </record>
+        <record id="group_hospital_brain_doctor" model="res.groups">
+            <field name="name">Brain Doctors</field>
             <field name="category_id" ref="module_category_doctor"/>
         </record>
 
@@ -63,6 +67,5 @@
             <field name="domain_force">[('email', '=', user.login)]</field>
             <field name="groups" eval="[(4, ref('group_hospital_patient'))]"/>
         </record>
-
     </data>
 </odoo>
