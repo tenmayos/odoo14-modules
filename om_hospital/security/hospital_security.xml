@@ -67,5 +67,7 @@
             <field name="domain_force">[('email', '=', user.login)]</field>
             <field name="groups" eval="[(4, ref('group_hospital_patient'))]"/>
         </record>
+
+        <!-- TODO Add record rules for doctors to view depending on department -->
     </data>
 </odoo>
