@@ -76,16 +76,15 @@ class HospitalPatient(models.Model):
     @api.model
     def create(self, vals):
         vals['state'] = 'sick'
-        #if '@' not in vals['email']:
-            #raise ValidationError('The Email Address is Incorrect')
+        # if '@' not in vals['email']:
+        # raise ValidationError('The Email Address is Incorrect')
 
-        if not self.ValidateEmail(vals['email']):
-            raise ValidationError('The Email Address Does not match any users')
+        # if not self.ValidateEmail(vals['email']):
+        # raise ValidationError('The Email Address Does not match any users')
 
         # create(vals) is for the chatter log message.
         # Setting note (description) field to new patient if its empty.
-        if not vals.get('note'):
-            vals['note'] = "New patient"
+        vals['note'] = "New patient"
 
         if vals.get('reference', 'New') == 'New':
             vals['reference'] = self.env['ir.sequence'].next_by_code('hospital.patient') or 'New'
@@ -93,6 +92,7 @@ class HospitalPatient(models.Model):
         # vals will be the results entered during record creation.
         # super(ClassStructure, ActualClassWithData)
         return super(HospitalPatient, self).create(vals)
+
     def ValidateEmail(self, emailString):
         usersList = self.env['res.users'].search([])
         for user in usersList:
