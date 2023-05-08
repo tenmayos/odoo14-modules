@@ -69,5 +69,25 @@
         </record>
 
         <!-- TODO Add record rules for doctors to view depending on department -->
+        <record id="brain_doctor_rule_id" model="ir.rule">
+            <field name="name">Brain Doctor Record Rule</field>
+            <field name="model_id" ref="model_hospital_patient"/>
+            <field name="domain_force">[('department', '=', 'brain')]</field>
+            <field name="groups" eval="[(4, ref('group_hospital_brain_doctor'))]"/>
+        </record>
+
+        <record id="heart_doctor_rule_id" model="ir.rule">
+            <field name="name">Heart Doctor Record Rule</field>
+            <field name="model_id" ref="model_hospital_patient"/>
+            <field name="domain_force">[('department', '=', 'heart')]</field>
+            <field name="groups" eval="[(4, ref('group_hospital_heart_doctor'))]"/>
+        </record>
+
+        <record id="administration_rule_id" model="ir.rule">
+            <field name="name">Admins Record Rule</field>
+            <field name="model_id" ref="model_hospital_patient"/>
+            <field name="domain_force">[('state', '=', 'done')]</field>
+            <field name="groups" eval="[(4, ref('group_hospital_administration'))]"/>
+        </record>
     </data>
 </odoo>
