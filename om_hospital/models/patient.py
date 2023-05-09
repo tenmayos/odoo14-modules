@@ -36,7 +36,12 @@ class HospitalPatient(models.Model):
     ]
 
     gender = fields.Selection(availableGenders, default='male')
-    note = fields.Text(string='Description')
+    note = fields.Text(
+        string='Description',
+        groups='om_hospital.group_hospital_heart_doctor,'
+        +
+        'om_hospital.group_hospital_brain_doctor'
+    )
 
     # These are the possible states for the Progress bar (Status bar).
     # Tracking param allows the current value to be tracked.
