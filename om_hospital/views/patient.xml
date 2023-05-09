@@ -94,6 +94,7 @@
                             class="btn-primary"
                             type="object"
                             states="sick,cancel"
+                            groups="om_hospital.group_hospital_heart_doctor,om_hospital.group_hospital_brain_doctor"
                             />
                     <button name="DoneButton"
                             id="action_done"
@@ -102,6 +103,7 @@
                             type="object"
                             states="treating"
                             confirm="Are you sure?"
+                            groups="om_hospital.group_hospital_heart_doctor,om_hospital.group_hospital_brain_doctor"
                             />
                     <button name="CancelButton"
                             id="action_cancel"
@@ -109,6 +111,7 @@
                             class="btn-danger"
                             type="object"
                             states="sick,treating"
+                            groups="om_hospital.group_hospital_receptionist"
                             />
                     <field name="state"
                            widget="statusbar"

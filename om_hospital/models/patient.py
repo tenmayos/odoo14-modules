@@ -98,6 +98,15 @@ class HospitalPatient(models.Model):
         # super(ClassStructure, ActualClassWithData)
         return super(HospitalPatient, self).create(vals)
 
+    # Hides the edit button if the user is a receptionist.
+    # While allowing only for state cancellation.
+    def check_access_rights(self, operation, raise_exception=True):
+        not_allowed = self.env.user.has_group('om_hospital.group_hospital_receptionist')
+        if operation == 'write' and not_allowed:
+            return False
+        return super(HospitalPatient, self).check_access_rights(operation, raise_exception)
+
+
     def ValidateEmail(self, emailString):
         usersList = self.env['res.users'].search([])
         for user in usersList:
