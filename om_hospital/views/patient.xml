@@ -11,23 +11,23 @@
             <!--Specifying the fields to be used inside the Template -->
             <kanban>
                 <!-- The ID field will be automatically added -->
-                <field name="id" />
-                <field name="name" />
-                <field name="age" />
-                <field name="gender" />
+                <field name="id"/>
+                <field name="name"/>
+                <field name="age"/>
+                <field name="gender"/>
                 <templates>
                     <t t-name="kanban-box">
                         <div t-attf-class="oe_kanban_global_click">
                             <div class="oe_kanban_details">
                                 <ul>
                                     <li>
-                                        Name: <field name="name" />
+                                        Name: <field name="name"/>
                                     </li>
                                     <li>
-                                        Age: <field name="age" />
+                                        Age: <field name="age"/>
                                     </li>
                                     <li>
-                                        Gender: <field name="gender" />
+                                        Gender: <field name="gender"/>
                                     </li>
                                 </ul>
                             </div>
@@ -44,8 +44,8 @@
         <field name="model">hospital.patient</field>
         <field name="arch" type="xml">
             <search string="Name">
-                <field name="name" />
-                <field name="note" />
+                <field name="name"/>
+                <field name="note"/>
                 <!-- This is Filters Syntax, Takes a filter with domain -->
                 <filter string="Male" name="male" domain="[('gender', '=', 'male')]"/>
                 <filter string="Female" name="female" domain="[('gender', '=', 'female')]"/>
@@ -66,7 +66,7 @@
             <tree>
                 <field name="name"/>
                 <field name="age"/>
-                <field name="responsible_id" />
+                <field name="responsible_id"/>
                 <field name="gender"/>
                 <field name="note"/>
                 <field name="state"/>
@@ -88,6 +88,14 @@
 
                     <!-- "states" field specifies when the btn
                     should be visible -->
+                    <button name="ConfirmPayment"
+                            id="action_confirm"
+                            string="Confirm Payment"
+                            class="btn-primary"
+                            type="object"
+                            states="billed"
+                            groups="om_hospital.group_hospital,om_hospital.group_hospital_patient"
+                    />
                     <button name="TreatingButton"
                             id="action_done"
                             string="Begin Treatment"
@@ -95,7 +103,7 @@
                             type="object"
                             states="sick,cancel"
                             groups="om_hospital.group_hospital_heart_doctor,om_hospital.group_hospital_brain_doctor"
-                            />
+                    />
                     <button name="DoneButton"
                             id="action_done"
                             string="Complete Treatment"
@@ -104,7 +112,7 @@
                             states="treating"
                             confirm="Are you sure?"
                             groups="om_hospital.group_hospital_heart_doctor,om_hospital.group_hospital_brain_doctor"
-                            />
+                    />
                     <button name="CancelButton"
                             id="action_cancel"
                             string="Cancel"
@@ -112,7 +120,7 @@
                             type="object"
                             states="sick,treating"
                             groups="om_hospital.group_hospital_receptionist"
-                            />
+                    />
                     <field name="state"
                            widget="statusbar"
                            statusbar_visible="sick,treating,done"
@@ -122,7 +130,7 @@
                 <sheet>
                     <div class="oe_title">
                         <h1>
-                            <field name="reference" readonly="1" />
+                            <field name="reference" readonly="1"/>
                         </h1>
                     </div>
                     <group>
@@ -141,10 +149,10 @@
                 </sheet>
                 <!-- Chatter box addition to a form -->
                 <div class="oe_chatter">
-                    <field name="message_follower_ids" />
+                    <field name="message_follower_ids"/>
                     <!-- This allows for Activity scheduling -->
-                    <field name="activity_ids" />
-                    <field name="message_ids" />
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
                 </div>
             </form>
         </field>
