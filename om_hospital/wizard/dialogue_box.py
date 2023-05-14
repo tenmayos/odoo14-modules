@@ -9,4 +9,6 @@ class DialogueBox(models.TransientModel):
     prompt_msg = fields.Char(string='Message')
 
     def ConfirmButton(self):
+        #TODO: Make the invoice's state posted.
+        #TODO: Change the patient's state into billed.
         print('hello')

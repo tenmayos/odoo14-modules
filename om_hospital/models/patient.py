@@ -72,7 +72,8 @@ class HospitalPatient(models.Model):
     # This function fires at the button press from the view.
     def ConfirmPayment(self):
         msg = 'Will you pay ' + str(self.price) + ' SAR?'
-
+        # Here i am calling the action defined inside
+        # Dialogue_box_view.xml and passing a context
         return {
             'name': 'Payment Confirmation',
             'type': 'ir.actions.act_window',
@@ -104,6 +105,8 @@ class HospitalPatient(models.Model):
             price = 10
 
         vals['price'] = price
+
+        # TODO: Create an invoice for the patient with the price
 
         # if '@' not in vals['email']:
         # raise ValidationError('The Email Address is Incorrect')
