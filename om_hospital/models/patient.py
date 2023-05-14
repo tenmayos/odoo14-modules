@@ -24,6 +24,7 @@ class HospitalPatient(models.Model):
     ]
 
     possibleStates = [
+        ('billed', 'Billed'),
         ('sick', 'Sick'),
         ('treating', 'Treating'),
         ('done', 'Done'),
@@ -52,6 +53,7 @@ class HospitalPatient(models.Model):
     )
 
     department = fields.Selection(availableDepartments, string='Department')
+    price = fields.Integer(string='Price')
 
     # Many2one Field is basically obtained from another place.
     # Many2one Fields r named (name)_id due to convention.
@@ -68,6 +70,8 @@ class HospitalPatient(models.Model):
     )
 
     # This function fires at the button press from the view.
+    def ConfirmPayment(self):
+        self.state = 'sick'
     def TreatingButton(self):
         self.state = 'treating'
 
@@ -80,7 +84,16 @@ class HospitalPatient(models.Model):
     # Overriding db record create method.
     @api.model
     def create(self, vals):
-        vals['state'] = 'sick'
+        vals['state'] = 'billed'
+        price = 0
+
+        if vals['department'] == 'brain':
+            price = 5
+        else:
+            price = 10
+
+        vals['price'] = price
+
         # if '@' not in vals['email']:
         # raise ValidationError('The Email Address is Incorrect')
 
