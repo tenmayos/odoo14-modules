@@ -71,7 +71,18 @@ class HospitalPatient(models.Model):
 
     # This function fires at the button press from the view.
     def ConfirmPayment(self):
-        self.state = 'sick'
+        msg = 'Will you pay ' + str(self.price) + ' SAR?'
+
+        return {
+            'name': 'Payment Confirmation',
+            'type': 'ir.actions.act_window',
+            'res_model': 'dialogue.box.wizard',
+            'view_mode': 'form',
+            'target': 'new',
+            'context': {
+                'default_prompt_msg': msg
+            }
+        }
     def TreatingButton(self):
         self.state = 'treating'
 
