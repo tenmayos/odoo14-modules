@@ -8,3 +8,5 @@ class DialogueBox(models.TransientModel):
 
     prompt_msg = fields.Char(string='Message')
 
+    def ConfirmButton(self):
+        print('hello')

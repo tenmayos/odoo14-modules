@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_dialogue_box" model="ir.ui.view">
+        <field name="name">dialogue_box_window</field>
+        <field name="model">dialogue.box.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Confirmation">
+                <field name="prompt_msg" context="{'default_prompt_msg': prompt_msg}" readonly="1"/>
+                <footer>
+                    <button string="Cancel"
+                            special="cancel"
+                            class="btn-secondary"
+                    />
+                    <button string="Confirm"
+                            type="object"
+                            name="ConfirmButton"
+                            class="btn-primary"
+                    />
+                </footer>
+            </form>
+        </field>
+    </record>
+    <!-- Creating an action to trigger the view -->
+    <record id="action_dialogue_box" model="ir.actions.act_window">
+        <field name="name">Dialogue Box</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">dialogue.box.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_dialogue_box"/>
+        <field name="target">new</field>
+    </record>
+</odoo>
