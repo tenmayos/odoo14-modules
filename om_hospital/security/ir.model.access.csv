@@ -5,3 +5,8 @@ access_hospital_brain_doc,access.hospital.patient,model_hospital_patient,group_h
 access_hospital_heart_doc,access.hospital.patient,model_hospital_patient,group_hospital_heart_doctor,1,1,0,0
 access_hospital_receptionist,access.hospital.patient,model_hospital_patient,group_hospital_receptionist,1,1,1,0
 access_hospital_patient,access.hospital.patient,model_hospital_patient,group_hospital_patient,1,0,0,0
+
+access_hospital_patient_dialogue,dialogue.box.wizard,model_dialogue_box_wizard,group_hospital_patient,1,1,1,1
+access_hospital_emp_dialogue,dialogue.box.wizard,model_dialogue_box_wizard,group_hospital,1,1,1,1
+
+access_hospital_emp_appointment,create.appointment.wizard,model_create_appointment_wizard,group_hospital,1,1,1,1
