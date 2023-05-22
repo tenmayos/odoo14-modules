@@ -10,6 +10,7 @@
     'website': 'https://www.yankydanky.com',
     'depends': [
         'mail',
+        'account',
         'sale',
         'report_xlsx'
     ],
