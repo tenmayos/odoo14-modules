@@ -1,3 +1,5 @@
+import datetime
+
 from odoo import fields, api, models
 from odoo.exceptions import ValidationError
 
@@ -81,11 +83,20 @@ class HospitalPatient(models.Model):
             'view_mode': 'form',
             'target': 'new',
             'context': {
-                'default_prompt_msg': msg
+                'default_prompt_msg': msg,
+                'default_inv_id': self.associated_invoice_id,
             }
         }
+
+    associated_invoice_id = fields.Integer()
     def TreatingButton(self):
-        self.state = 'treating'
+        invoice = self.env['account.move'].search([('id', '=', self.associated_invoice_id)])
+        if invoice.state == 'draft':
+            ValidationError('Sorry, patient needs to pay the fees')
+        elif invoice.state == 'posted':
+            self.state = 'treating'
+        else:
+            ValidationError('something went wrong..?')
 
     def DoneButton(self):
         self.state = 'done'
@@ -107,7 +118,22 @@ class HospitalPatient(models.Model):
         vals['price'] = price
 
         # TODO: Create an invoice for the patient with the price
+        partner = self.env['res.partner'].search([('name', '=', 'bassam')])
+        currency = self.env['res.currency'].search([('name', '=', 'SAR')])
 
+        invoice = self.env['account.move'].create({
+            'move_type': 'out_invoice',
+            'partner_id': partner.id,
+            'invoice_date': datetime.date.today(),
+            'invoice_line_ids': [("label", 0, {
+                'name': 'examination',
+                'quantity': 1,
+                'price_unit': price,
+                'tax_ids': [(6, 0, 0)],
+            })]
+        })
+
+        vals['associated_invoice_id'] = invoice.id
         # if '@' not in vals['email']:
         # raise ValidationError('The Email Address is Incorrect')
 
