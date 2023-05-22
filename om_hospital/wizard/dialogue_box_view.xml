@@ -6,6 +6,7 @@
         <field name="arch" type="xml">
             <form string="Confirmation">
                 <field name="prompt_msg" context="{'default_prompt_msg': prompt_msg}" readonly="1"/>
+                <field name="inv_id" context="{'default_inv_id': inv_id}" readonly="1" invisible="1"/>
                 <footer>
                     <button string="Cancel"
                             special="cancel"
