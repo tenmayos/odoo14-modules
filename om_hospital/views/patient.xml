@@ -102,7 +102,7 @@
                             class="btn-primary"
                             type="object"
                             states="sick,cancel"
-                            groups="om_hospital.group_hospital_heart_doctor,om_hospital.group_hospital_brain_doctor"
+                            groups="om_hospital.group_hospital_heart_doctor,om_hospital.group_hospital_brain_doctor,om_hospital.group_hospital"
                     />
                     <button name="DoneButton"
                             id="action_done"
